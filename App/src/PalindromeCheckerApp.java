@@ -1,26 +1,35 @@
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // UC5 - Stack-Based Palindrome Checker
-        String word = "deed";  // You can change this string to test
+        // UC6 - Queue + Stack Based Palindrome Check
+        String word = "level"; // test string
+
+        Queue<Character> queue = new LinkedList<>();
         Stack<Character> stack = new Stack<>();
 
-        // Push characters into the stack
+        // Enqueue & push characters
         for (int i = 0; i < word.length(); i++) {
-            stack.push(word.charAt(i));
+            char c = word.charAt(i);
+            queue.add(c); // enqueue
+            stack.push(c); // push
         }
 
-        // Pop characters to build reversed string
-        String reversed = "";
-        while (!stack.isEmpty()) {
-            reversed += stack.pop();
+        boolean isPalindrome = true;
+
+        // Compare dequeue vs pop
+        while (!queue.isEmpty()) {
+            if (!queue.remove().equals(stack.pop())) {
+                isPalindrome = false;
+                break;
+            }
         }
 
-        // Compare original and reversed strings
-        if (word.equals(reversed)) {
+        if (isPalindrome) {
             System.out.println(word + " is a Palindrome");
         } else {
             System.out.println(word + " is not a Palindrome");
