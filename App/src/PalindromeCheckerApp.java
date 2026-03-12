@@ -1,29 +1,24 @@
+import java.util.Deque;
 import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Stack;
 
 public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // UC6 - Queue + Stack Based Palindrome Check
-        String word = "level"; // test string
+        // UC7 - Deque-Based Optimized Palindrome Checker
+        String word = "radar";  // test string
+        Deque<Character> deque = new LinkedList<>();
 
-        Queue<Character> queue = new LinkedList<>();
-        Stack<Character> stack = new Stack<>();
-
-        // Enqueue & push characters
+        // Insert characters into deque
         for (int i = 0; i < word.length(); i++) {
-            char c = word.charAt(i);
-            queue.add(c); // enqueue
-            stack.push(c); // push
+            deque.addLast(word.charAt(i));
         }
 
         boolean isPalindrome = true;
 
-        // Compare dequeue vs pop
-        while (!queue.isEmpty()) {
-            if (!queue.remove().equals(stack.pop())) {
+        // Compare front and rear
+        while (deque.size() > 1) {
+            if (!deque.removeFirst().equals(deque.removeLast())) {
                 isPalindrome = false;
                 break;
             }
