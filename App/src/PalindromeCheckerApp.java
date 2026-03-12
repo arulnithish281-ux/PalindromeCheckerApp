@@ -2,14 +2,22 @@ public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // Application Startup Information
-        System.out.println("=================================");
-        System.out.println("Welcome to the Palindrome Checker App");
-        System.out.println("Application Name: Palindrome Checker");
-        System.out.println("Version: 1.0");
-        System.out.println("=================================");
+        // UC2 - Hardcoded Palindrome Check
+        String a = "madam";
+        char[] b = a.toCharArray();
+        int l = a.length();
+        boolean flag = true;
 
-        // Program will continue to next use case
-        System.out.println("Application is ready to check palindromes...");
+        for (int i = 0; i < l / 2; i++) {
+            if (b[i] != b[l - i - 1]) {
+                flag = false;
+                break;
+            }
+        }
+
+        if (flag)
+            System.out.println("String is Palindrome");
+        else
+            System.out.println("Not a Palindrome");
     }
 }
