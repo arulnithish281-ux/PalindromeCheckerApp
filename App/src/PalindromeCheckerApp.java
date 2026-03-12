@@ -2,14 +2,20 @@ public class PalindromeCheckerApp {
 
     public static void main(String[] args) {
 
-        // Application Startup Information
-        System.out.println("=================================");
-        System.out.println("Welcome to the Palindrome Checker App");
-        System.out.println("Application Name: Palindrome Checker");
-        System.out.println("Version: 1.0");
-        System.out.println("=================================");
+        // UC3 - Palindrome Check Using String Reverse
+        String original = "level";  // You can change this string to test
+        String reversed = "";
 
-        // Program will continue to next use case
-        System.out.println("Application is ready to check palindromes...");
+        // Reverse the string using a loop
+        for (int i = original.length() - 1; i >= 0; i--) {
+            reversed = reversed + original.charAt(i);
+        }
+
+        // Compare original and reversed strings
+        if (original.equals(reversed)) {
+            System.out.println(original + " is a Palindrome");
+        } else {
+            System.out.println(original + " is not a Palindrome");
+        }
     }
 }
